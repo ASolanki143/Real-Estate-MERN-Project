@@ -15,9 +15,10 @@ export default function SignUp() {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       
-      e.preventDefault();
+     setLoading(true);
       const res = await fetch('/api/auth/signup' , {
         method : "POST",
         headers : {
@@ -53,7 +54,7 @@ export default function SignUp() {
       </form>
       <div className='flex gap-2 mt-5'>
         <p>Have an account?</p>
-        <Link to="signin">
+        <Link to="/sign-in">
           <span className='text-blue-700'>Sign In</span>
         </Link>
       </div>
