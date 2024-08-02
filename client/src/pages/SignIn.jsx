@@ -8,9 +8,10 @@ import {
 } from "../redux/user/userSlice";
 
 export default function SignIn() {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({email : "" , password : ""});
   const { loading, error } = useSelector((state) => state.user);
-
+  console.log(loading);
+  console.log(error);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleChange = (e) => {
@@ -24,7 +25,7 @@ export default function SignIn() {
     e.preventDefault();
 
     try {
-      dispatch(signInStart);
+      dispatch(signInStart());
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: {
